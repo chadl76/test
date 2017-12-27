@@ -1,0 +1,9 @@
+<%=form_for(current_user.posts.comments.build, remote: true) do |f| %>
+	sdfsdf
+	<%=f.text_area :body, placeholder: "Provide comment" %>
+	<%=f.hidden_field_tag :post_id, post.id %>
+	<%=f.hidden_field_tag :author_id, :value => current_user.id %> 
+
+	<%=f.submit "Leave comment" %>
+
+<%end %>

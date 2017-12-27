@@ -1,0 +1,12 @@
+<h1>Profiles#new</h1>
+
+
+<%=current_user.email %>
+
+<%=simple_form_for([@user, @profile], :url => user_edit_profile_path, :controller => :profile, :action => :update) do |f| %>
+	<%=f.input :birthday %>
+	<%=f.input :college %>
+	<%=f.input :words_to_live_by %>
+	<%=f.input :hometown %>
+	<%=f.button :submit %>
+<%end%>

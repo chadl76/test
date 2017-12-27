@@ -1,0 +1,48 @@
+
+<div class="post-info-wrapper">
+	<div class="row">
+		<div class="col-xs-4 col-xs-offset-3">
+			<div class="image-name">
+			<%= image_tag avatar_url(current_user), :class => "avatar-logo", size: "30x30"%><span>
+				<h4 class="status-name"><strong><%=link_to current_user.full_name %></strong></h4>
+			</span>
+		</div>
+			<p class="datetime"><%=clean_date(post.created_at)%></p
+		<p><%=post.body %></p>
+
+<%unless post.body.nil? %>
+	<div class="like-form">
+	<%=form_for(current_user.likes.build) do |f| %>
+	<%= f.hidden_field :post_id, value: post.id %>
+	<div class="like-btn"><%= link_to f.submit "like"%><span class="glyphicon glyphicon-thumbs-up"></span><span><%=post.likes.count%></span>
+		<span>
+<%=link_to "Comments", new_post_comment_path(post_id: post.id) %><br>
+ </span>
+	</div>
+	<%end %>
+
+
+	<% if post.likes.any? %>
+
+	<%=post.likes.count%><p>(likes)</p>
+
+	<%end %>
+	</div>
+
+
+
+
+<br>
+<% if post.comments.any? %>
+	<%post.comments.each do |c| %>
+	<%= c.body %>
+	<%= c.author.email %>
+	<%= c.created_at %>
+
+	<%end %>
+<%end%>
+
+<%end %>
+</div>
+</div>
+</div>

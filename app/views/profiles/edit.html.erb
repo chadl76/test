@@ -1,0 +1,14 @@
+<h1>Profiles#edit</h1>
+<p>Find me in app/views/profiles/edit.html.erb</p>
+
+<%=current_user.email %>
+
+<%=simple_form_for([@user, @profile], :url => user_profile_path, :controller => :profiles, :action => :update) do |f| %>
+	<%=f.input :birthday %>
+	<%=f.input :college %>
+	<%=f.input :words_to_live_by %>
+	<%=f.input :hometown %>
+	<%=f.button :submit %>
+<%end%>
+
+<%=link_to "back", user_profile_path(current_user) %>

@@ -1,0 +1,24 @@
+
+<% if current_user.requested_friends.any? %>
+<% current_user.requested_friends.each do |request| %>
+		<%=request.email %>
+		<%=link_to "Accept", friendships_update_path(id: request.id, method: "put") %>
+		<%=link_to "Decline", friendships_destroy_path(id: request.id, method: :delete) %>
+	<%end%>
+	<%end%>
+
+<h1>Users</h1>
+
+<%@users.each do |u| %>
+	<tr>
+	
+		<td><%=image_tag avatar_url(u) %></td>
+		<td><%=u.email%>
+			<% if u.id != current_user.id %>
+		<%=link_to "Add friend", friendships_path(friend_id: u), method: :post %></td>
+		<%end %><br>
+	
+	</tr>
+	
+	
+<%end%>

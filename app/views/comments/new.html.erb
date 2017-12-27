@@ -1,0 +1,22 @@
+<%=link_to "newsfeed", newsfeed_path(current_user)%>
+<%=@post.body %>
+
+
+<%=simple_form_for(@post.comments.build, :url =>  post_comments_path(@post.id), :method => :create) do |f| %>
+	
+	<%=f.text_area :body, placeholder: "Provide comment" %>
+	
+	<%=f.hidden_field :author_id, :value => current_user.id %> 
+	
+
+	<%=f.submit "Leave comment" %>
+
+<%end %>
+
+<% if @post.comments.any? %>
+	<%=@post.comments.each do |c| %>
+	<%=c.body %>
+	<%=c.author.inspect %>
+	<%=@post.comments.count%>
+	<%end %>
+	<%end %>

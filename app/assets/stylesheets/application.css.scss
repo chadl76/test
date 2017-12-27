@@ -1,0 +1,162 @@
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *
+ *
+ */
+
+
+
+.top-header-bar {
+	background-color: #45629E;
+	height: 100px;
+	position: absolute;
+	width: 100%;
+	left: 0;
+}
+
+.main-background-logo {
+	position: relative;
+	left: 98px;
+	top: 119px;
+}
+
+.main-backgroun-logo img {
+	width: 102.4%;
+	height: 100%;
+	position: relative;
+	left: -14px;
+	
+}
+
+
+
+
+.main-pic {
+	padding-top: 100px;
+
+}
+
+body {
+	background-color: #f7f7f7;
+}
+.wall-contain {
+    background-color: rgba(255,255,255,0.7);
+    border-color: #E5E6E9 #DFE0E4 #D0D1D5;
+    border-radius: 3px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    width: 100%;
+    -webkit-box-shadow: 0px 0px 2px 0px rgba(0,133,250,0.5);
+    -moz-box-shadow: 0px 0px 2px 0px rgba(0,133,250,0.5);
+    box-shadow: 0px 0px 2px 0px rgba(0,133,250,0.5);
+    float:right;
+    clear:both;
+    padding-top: 41px;
+}
+
+.post {
+    margin-top: 4%;
+    margin-left: 7%;
+    clear:both;
+    max-width: 100%;
+    resize: none;
+   	
+    border: 3px solid #D3D6DB;
+    border-radius: 5px;
+-webkit-box-shadow: 0px 14px 62px -24px rgba(0,0,0,1);
+-moz-box-shadow: 0px 14px 62px -24px rgba(0,0,0,1);
+box-shadow: 0px 14px 62px -24px rgba(0,0,0,1);    
+}
+
+
+.post-button {
+    float:right;
+     clear:both;
+     margin-bottom: 4%;
+     margin-top: 2%;
+}
+
+
+links-bar {
+	padding-top: 112px;
+}
+
+.side-links {
+	position: relative;
+	top: 165px;
+}
+
+
+.post-info-wrapper {
+	background-color: #FFFFFF;
+    margin-top: 38px;
+    
+}
+
+
+.datetime {
+	color: #9197A3;
+	font-family: helvetica, arial, sans-serif;
+	font-size: 12px;
+}
+
+.image-name {
+    display: inline-flex;
+}
+
+
+.top-bar-name {
+    color: #FFFFFF;
+    font-size: 16px;
+    display: inline-flex;
+    position: relative;
+    top: 49px;
+    left: -240px;
+    }
+
+.title-text {
+    position: relative;
+    top: 39px;
+    left: -177px;
+}
+
+.top-search-bar {
+    position: relative;
+    top: 45px;
+    left: -542px;
+    width: 138%;
+}
+
+.top-nav-name {
+    margin-left: 20px;
+    margin-top: 12px;
+}
+
+.friend-icon {
+    margin-left: 20px;
+    position: relative;
+    top: 10px;
+}
+
+.sign-out-nav {
+    margin-left: 20px;
+    display: inline-flex;
+    font-color: #45629E; 
+}
+
+.pic-link {
+    margin-left: 111px;
+}

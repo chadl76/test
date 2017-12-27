@@ -1,0 +1,17 @@
+<div class="container">
+<div class="row">
+
+<div class="col-xs-6 col-xs-offset-3 post-form post-form post">
+<%=form_for(@post_new, remote: true) do |f| %>
+	
+	<div class="form-group">
+	<%=f.text_area :body, :placeholder => "Whats on your mind?", cols:50, rows:3, class: "post"%>
+	</div>
+	<div class="form-group">
+	<%=f.submit "Post", class: "btn btn-primary post-button" %>
+	</div>
+
+<%end%>
+</div>
+</div>
+</div>
