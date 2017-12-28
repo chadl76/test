@@ -41,6 +41,9 @@
 	
 }
 
+.main-text {
+    margin-top: 162px;
+}
 
 
 
@@ -159,4 +162,47 @@ links-bar {
 
 .pic-link {
     margin-left: 111px;
+}
+
+.form_input {
+    width: 100%;
+}
+
+.email-top-bar {
+    display: inline-flex;
+    margin-top: 47px;
+    margin-left: 463px;
+    
+}
+
+.email_input_field {
+    height: fit-content;
+}
+
+.input_field {
+    margin-right: 23px;
+    height: 26px;
+    
+}
+
+.remember_me_btn {
+    margin-left: 26px;
+    margin-right: 23px;
+}
+
+.signup-text {
+    postition: relative;
+    top: 26px;
+    left: 20px;
+}
+
+
+.fb-btn {
+    margin-left: 447px;
+    position: relative;
+    top: -24px;
+}
+
+#signup-btn {
+    margin-top: 20px;
 }

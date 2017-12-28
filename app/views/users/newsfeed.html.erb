@@ -47,10 +47,15 @@
 
 
 
+<% if current_user.photos.first.nil? %>
+	<div class="col-xs-8 main-background-logo"><%image_tag("la.jpg", size: "1120x430", alt: "background-pic", :id=>"backgound-pic") %>
+		
+	</div>
 
+<%else%>
 <div class="col-xs-8 main-background-logo"><%= image_tag(current_user.photos.first.image.url, size: "1120x430", :id=> "backgound-pic")%></div>
 </div>
-
+<%end%>
 
 </div>
 

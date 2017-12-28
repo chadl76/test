@@ -1,23 +1,32 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <nav class="header">
   <div class="row top-header-bar">
-     <div class="col-xs-3 signup-text"><h2>Log in</h2></div>
+     <div class="col-xs-3 signup-text"><%=image_tag("fb-1", size: "50x50")%></div>
 <div class="inputs col-xs-9">
   <div class="input-wrapper">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field email-top-bar">
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.label :email, :class=>"input_field" %>
+    <%= f.email_field :email, autofocus: true, :class=>"input_field" %>
   
 
   <div class="field password-top-bar">
-    <%= f.label :password %>
+    <%= f.label :password, :class=>"input_field"%>
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="field remember_me_btn">
+      <%= f.check_box :remember_me, :class=>"remember_me_btn" %>
+      <%= f.label :remember_me, :class=>"remember_me" %>
     </div>
   <% end %>
 
@@ -27,6 +36,7 @@
 </div>
 
 <% end %>
+</div>
 </div>
 </div>
 </nav>
@@ -58,17 +68,17 @@
 
    <div class="field">
     <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true %>
+    <%= f.text_field :first_name, autofocus: true, :class=>"form_input" %>
   </div>
 
    <div class="field">
     <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true %>
+    <%= f.text_field :last_name, autofocus: true, :class=>"form_input" %>
   </div>
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, autofocus: true, :class=>"form_input" %>
   </div>
 
   <div class="field">
@@ -76,17 +86,17 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off", :class=>"form_input" %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", :class=>"form_input"%>
   </div>
 
   
   <div class="actions">
-    <%= f.submit "Sign up",:class=>"btn btn-block btn-success btn-large", :id => "sigup-btn" %>
+    <%= f.submit "Sign up",:class=>"btn btn-block btn-success btn-large", :id => "signup-btn" %>
   </div>
 <% end %>
 </div>
