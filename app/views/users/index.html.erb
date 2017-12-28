@@ -1,4 +1,72 @@
 
+<div class="container">
+<nav class="header">
+	<div class="row top-header-bar">
+		
+		<div class="col-xs-2 "></div>
+		
+		<div class="col-xs-3 title-text"><%=image_tag("fb-1", size: "40x40")%></div>
+		
+		<div class="col-xs-4"><input type="text" class="form-control top-search-bar" aria-label="search" placeholder="search">
+			
+		</div>
+		
+		<div class="col-xs-2 top-bar-name">
+			<%= image_tag avatar_url(current_user), :class => "avatar-logo", size: "30x30"%>
+			<h4 class="top-nav-name"><%=current_user.first_name%></h4>
+		<div class="friend-icon">
+			<span class="glyphicon glyphicon-user"></span>
+				<%= current_user.pending.count  %>	<div class="sign-out-nav">
+				<%= link_to "Logout", destroy_user_session_path, method: :delete %></div>
+		
+		<%=render 'friend_btn' %>
+	</div>
+		</div>
+
+	
+</nav>
+</div>
+	
+	
+	<div class="col-xs-2 side-links">
+			<nav>
+	<ul class="row links-bar nav nav-pills nav-stacked">
+		<li class="pic-link"><%= image_tag avatar_url(current_user), :class => "avatar-logo", disable: true %></li>
+		<li role="presentation" class="timeline-link text-center"><%=link_to "Timeline", newsfeed_path(current_user) %></li>
+		<li class="user-link text-center"><%=link_to "Users", disable: true %></li>
+		<li class="about-link text-center"><%=link_to "About", user_profile_path(current_user) %></li>
+		<li class="photo-link text-center"><%=link_to "Photos" %></li>
+		<li class="friend-link text-center"><%=link_to "Friends" %></li>
+		<li class="profile-link text-center"><%=link_to "Edit profile", edit_user_profile_path(current_user)%></li>
+
+	
+</div>
+</ul>
+</nav>
+</div>
+
+
+
+
+<% if current_user.photos.first.nil? %>
+	<div class="col-xs-8 main-background-logo"><%image_tag("la.jpg", size: "1120x430", alt: "background-pic", :id=>"backgound-pic") %>
+		
+	</div>
+
+<%else%>
+<div class="col-xs-8 main-background-logo"><%= image_tag(current_user.photos.first.image.url, size: "1120x430", :id=> "backgound-pic")%></div>
+</div>
+<%end%>
+
+</div>
+
+
+
+
+
+<div class="user-container">
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-3 user-wall">
 <% if current_user.requested_friends.any? %>
 <% current_user.requested_friends.each do |request| %>
 		<%=request.email %>
@@ -7,18 +75,22 @@
 	<%end%>
 	<%end%>
 
-<h1>Users</h1>
+
 
 <%@users.each do |u| %>
 	<tr>
-	
-		<td><%=image_tag avatar_url(u) %></td>
+		<div class="u">
+		<td><%=image_tag avatar_url(u), size: "40x40" %></td>
 		<td><%=u.email%>
 			<% if u.id != current_user.id %>
 		<%=link_to "Add friend", friendships_path(friend_id: u), method: :post %></td>
 		<%end %><br>
 	
 	</tr>
-	
+	</div>
 	
 <%end%>
+
+</div>
+</div>
+</div>
