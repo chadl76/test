@@ -1,2 +1,10 @@
-<%= link_to image_tag(photo.image.url(:thumb), class: 'media-object'), photo.image.url %>
-<%= photo.title %>
+<%#@photos.each do |p| %>
+
+<%#= p.title %>
+<%#= link_to image_tag(p.image.url(:thumb), class: 'media-object'), p.image.url %>
+
+
+<%#end%>
+
+
+<%= render template: 'photos/show', :locals => {:photo => photo} %>

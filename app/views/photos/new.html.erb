@@ -1,3 +1,6 @@
+
+<div class="row">
+	<div class="col-xs-5">
 <h1>Upload</h1>
 
 <%= form_for [@user, Photo.new] do |f| %>
@@ -6,3 +9,5 @@
 	<%=f.file_field :image %>
 	<%=f.submit "Upload Image" %>
 	<%end%>
+</div>
+</div>

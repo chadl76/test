@@ -1,6 +1,9 @@
 <%=current_user.first_name %>
 
-<%=link_to "upload photo", new_user_photo_path(current_user) %>
 
+<div class="row photo-wall">
 <%= render @photos %>
+
+</div>
+<%= render template: 'photos/new' %>
 <%=link_to "newsfeed", newsfeed_path(current_user) %>
