@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="col-xs-4 col-xs-offset-3 post-wrapper">
 			<div class="image-name">
-			<%= image_tag avatar_url(current_user), :class => "avatar-logo", size: "30x30"%><span>
+			<%= image_tag avatar_url(current_user), :class => "avatar-logo post-avatar-logo", size: "30x30"%><span>
 				<h4 class="status-name"><strong><%=link_to current_user.full_name %></strong></h4>
 			</span>
 		</div>
@@ -14,7 +14,7 @@
 	<div class="like-form">
 	<%=form_for(current_user.likes.build) do |f| %>
 	<%= f.hidden_field :post_id, value: post.id %>
-	<div class="like-btn"><%= link_to f.submit "like"%><span class="glyphicon glyphicon-thumbs-up"></span><span><%=post.likes.count%></span>
+	<div class="like-btn"><%= link_to f.submit "like"%><span class="glyphicon glyphicon-thumbs-up thumb"></span><span><%=post.likes.count%></span>
 		<span>
 <%=link_to "Comments", new_post_comment_path(post_id: post.id) %><br>
  </span>
