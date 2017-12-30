@@ -25,7 +25,7 @@
 	position: absolute;
 	width: 100%;
 	left: 0;
-    color: #f7f7f7;
+
 }
 
 .main-background-logo {
@@ -193,7 +193,11 @@ links-bar {
 .input_field {
     margin-right: 23px;
     height: 26px;
-    
+
+}
+
+.input_label {
+    color: #f7f7f7;
 }
 
 .remember_me_btn {

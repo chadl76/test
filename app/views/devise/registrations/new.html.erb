@@ -14,19 +14,19 @@
   <div class="input-wrapper">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field email-top-bar">
-    <%= f.label :email, :class=>"input_field" %>
+    <%= f.label :email, :class=>"input_field input_label" %>
     <%= f.email_field :email, autofocus: true, :class=>"input_field" %>
   
 
   <div class="field password-top-bar">
-    <%= f.label :password, :class=>"input_field"%>
+    <%= f.label :password, :class=>"input_field input_label"%>
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
     <div class="field remember_me_btn">
       <%= f.check_box :remember_me, :class=>"remember_me_btn" %>
-      <%= f.label :remember_me, :class=>"remember_me" %>
+      <%= f.label :remember_me, :class=>"remember_me input_label" %>
     </div>
   <% end %>
 
