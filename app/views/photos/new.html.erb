@@ -1,13 +1,22 @@
 
 <div class="row">
-	<div class="col-xs-5">
-<h1>Upload</h1>
-
+	<div class="col-xs-5 photo-form">
+<h3>Upload</h3>
+<div class="photo-form-wrapper">
 <%= form_for [@user, Photo.new] do |f| %>
+	<div class="photo-form-label">
 	<%=f.label :title %>
+	</div>
+	<div class=photo-form-text-field>
 	<%=f.text_field :title %>
+	</div>
+	<div class=photo-form-file-field>
 	<%=f.file_field :image %>
+	</div>
+	<div class="photo-form-submit-btn">
 	<%=f.submit "Upload Image" %>
+	</div>
 	<%end%>
+</div>
 </div>
 </div>
