@@ -32,9 +32,9 @@
 	<ul class="row links-bar nav nav-pills nav-stacked">
 		<li class="pic-link"><%= image_tag avatar_url(current_user), :class => "avatar-logo", disable: true %></li>
 		<li role="presentation" class="timeline-link text-center"><%=link_to "Timeline", newsfeed_path(current_user) %></li>
-		<li class="user-link text-center"><%=link_to "Users", disable: true %></li>
-		<li class="about-link text-center"><%=link_to "About", user_profile_path(current_user) %></li>
-		<li class="photo-link text-center"><%=link_to "Photos" %></li>
+		<li class="user-link text-center"><%=link_to "Users" %></li>
+		<li class="about-link text-center"><%=link_to "About", user_profile_path(current_user), disbale: true %></li>
+		<li class="photo-link text-center"><%=link_to "Photos", user_photos_path(current_user) %></li>
 		<li class="friend-link text-center"><%=link_to "Friends" %></li>
 		<li class="profile-link text-center"><%=link_to "Edit profile", edit_user_profile_path(current_user)%></li>
 
@@ -63,23 +63,18 @@
 
 
 
+
 	<div class="row">
-		<div class="col-xs-8 col-xs-offset-3 profile-wall">
+	  <div class="profile-wrapper">	
+		<div class="col-xs-4 col-xs-offset-3 profile-section-1">
+  			<h2>Word to live by:</h2><p> <%=@profile.words_to_live_by %></p>
+  		</div>
 
-<table>
-<td>
-	<div>
-<tr>Birthday: <%=@profile.birthday %></tr>
-</div>
-<div>
-<tr>Homwtown: <%=@profile.hometown.length%></tr>
-</div>
-<div>
-<tr>College: <%=@profile.college %></tr>
-</div>
+  		<div class="col-xs-4 profile-section-2">
+			<h2>Birthday:</h2><p> <%=@profile.birthday %></p>
+			<h2>Hometown:</h2><p> <%=@profile.hometown.length%></p>
+			<h2>College:</h2><p><%=@profile.college %></p>
+		</div>
+	  </div>
+	</div>
 
-
-</td>
-</table>
-</div>
-</div>
