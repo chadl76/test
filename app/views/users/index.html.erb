@@ -34,9 +34,10 @@
 		<li class="pic-link"><%= image_tag avatar_url(current_user), :class => "avatar-logo", disable: true %></li>
 		<li role="presentation" class="timeline-link text-center"><%=link_to "Timeline", newsfeed_path(current_user) %></li>
 		<li class="user-link text-center"><%=link_to "Users", disable: true %></li>
+
 		<li class="about-link text-center"><%=link_to "About", user_profile_path(current_user) %></li>
-		<li class="photo-link text-center"><%=link_to "Photos" %></li>
-		<li class="friend-link text-center"><%=link_to "Friends" %></li>
+		<li class="photo-link text-center"><%=link_to "Photos", user_photos_path(current_user) %></li>
+		<li class="friend-link text-center"><%=link_to "Friends", user_friendships_path(current_user) %></li>
 		<li class="profile-link text-center"><%=link_to "Edit profile", edit_user_profile_path(current_user)%></li>
 
 	

@@ -294,3 +294,21 @@ links-bar {
     position: relative;
     top: -16px;
 }
+
+.u {
+    padding: 6px;
+    box-shadow: inset 0px 0px 0px #888, 17px 4px 10px 1px #888;
+}
+
+.user-wall {
+    position: relative;
+    left: -68px;
+    width: 29%;
+}
+
+
+.u:hover {
+
+    font-size: 16px;
+    margin-right: 6px;
+}
