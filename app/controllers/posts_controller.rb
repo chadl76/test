@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :set_post, only: [:show, :index]
+	#before_action :set_post, only: [:show, :index]
+
 
 	#def new
 	#	@user = current_user
@@ -10,23 +11,28 @@ class PostsController < ApplicationController
 
 	def show
 		@user = current_user
-		@post = Post.find(params[:id])
-		#@comment = Comment.new(:post => @post)
-		#@comment.author_id = current_user.id
-		#@comment.save
-		#@comments = Comment.find_by(params[:post_id])
+		@post = Post.find(params[:id])	
+		@like = Like.new
 		redirect_to newsfeed_path(current_user)
 	end
 
 	def create
 		@post = current_user.posts.build(post_params)
-		
-		
 		if @post.save
+		flash[:success] = "Post created"
 		redirect_to newsfeed_path(current_user)
 		end		
 
 	end
+
+	def destroy
+		@post = Post.find(params[:id])
+		@post.destroy
+		flash[:warning] = "post deleted" 
+		redirect_to newsfeed_path(current_user)
+	end
+
+
 
 	private
 	

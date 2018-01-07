@@ -19,9 +19,9 @@ class FriendshipsController < ApplicationController
 
   def update
   	@friendship = Friendship.find_by(id: params[:id])
-  	#@friendship.update(friend_id: params[:id])
-    @friendship.update(accepted: true)
+  	@friendship.update(accepted: true)
   	if @friendship.save
+      flash[:success] = "Friend accepted" 
   		redirect_to newsfeed_path(current_user)
   	end
   end
@@ -30,6 +30,7 @@ class FriendshipsController < ApplicationController
   	@friendship = Friendship.find_by(id: params[:id])
   	@friendship.destroy
   	if @friendship.destroy
+      falsh[:warning] = "Friendship declined"
 	    redirect_to newsfeed_path(current_user)
   	end
   end

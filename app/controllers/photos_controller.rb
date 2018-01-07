@@ -16,6 +16,7 @@ class PhotosController < ApplicationController
 		@photo = @user.photos.create(photo_params)
 		
 		@photo.save!
+		flash[:notice] = "photo uploaded!"
 		redirect_to newsfeed_path(current_user)
 	end
 

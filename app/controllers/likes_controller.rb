@@ -1,13 +1,15 @@
 class LikesController < ApplicationController
 	before_action :authenticate_user!
+  #before_action :set_post
   
-  
-
-  def create
+    def create
   	@user = current_user
-  	@like = Like.new(like_params)
-  	@like.user_id = current_user.id
+  	#@like = @user.likes.build(like_params)
+    @like = Like.new(like_params)
+    #@like.post_id = @post.id
+  	#@like.user_id = current_user.id
   	if @like.save!
+      flash[:notice] = "succefully liked"
   		redirect_to newsfeed_path(@user)
   	end
   end
@@ -25,5 +27,9 @@ class LikesController < ApplicationController
 
   def like_params
   	params.require(:like).permit(:post_id)
+  end
+
+    def set_post
+    @post = Post.find(params[:post_id])
   end
 end

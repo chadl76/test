@@ -48,7 +48,12 @@
 
 <div class="row photo-wall">
 	<div class="col-xs-12">
-<%= render @photos %>
+		<%= render @photos %>
+	</div>
 </div>
+
+<div class="row">
+	<div class="col-xs-4 col-xs-offset-2">
+		<%= render template: 'photos/new' %>
+	</div>
 </div>
-<%= render template: 'photos/new' %>

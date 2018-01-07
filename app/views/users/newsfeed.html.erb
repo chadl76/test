@@ -70,6 +70,7 @@
 </div>
 <div class="row">
 	<div class="col-xs-6">
+<% unless current_user.friends%> 
 <div class="friendships">
 	<h1>current friends</h1>
 	<%current_user.friends.each do |f| %>
@@ -78,3 +79,4 @@
 </div>
 </div>
 </div>
+<%end%>

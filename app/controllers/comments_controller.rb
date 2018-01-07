@@ -1,46 +1,31 @@
 class CommentsController < ApplicationController
 	skip_before_action :verify_authenticity_token
 	before_action :authenticate_user!
-	before_action :set_post
+	#before_action :set_post
 
 
 	def new
-		@user = current_user
-		@comment = @post.comments.build
-		@comment.author_id = @user.id
-		
-		
+		@post = Post.find(params[:post_id])
+		comment = Comment.new
 	end
 
 
 
 	def create
-		
-	
-		#@comment = current_user.posts.comments.create(comment_params)
-		@comment = @post.comments.build(comment_params)
-		#@comment.post_id = @post.id
 		@post = Post.find(params[:post_id])
-		#@comment.author_id = current_user.id
-		@comment.author_id = current_user.id
-		@comment.post_id = @post.id
-		
-		@comment.save
+		@comment = @post.comments.create(comment_params)
 		if @comment.save!
-			redirect_to new_post_comment_path(@post)
-		#redirect_to newsfeed_path(current_user)
-	end
+			flash[:success] = "comment created"
+			redirect_to newsfeed_path(current_user)
+		end
 	end
 
 	private
 
 	def comment_params
-		params.require(:comment).permit(
-								:id, 
-								:author_id,
-								:post_id,
-								:body)
-	
+		params.require(:comment).permit(:body,
+										:post_id,
+										:author_id)
 	end
 
 	def set_post

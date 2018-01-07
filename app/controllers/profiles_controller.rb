@@ -22,6 +22,7 @@ class ProfilesController < ApplicationController
     @profile.update(profile_params)
     @profile.save
     if @profile.save
+      flash[:notice] = "Profile updated!"
       redirect_to user_profile_path(current_user)
     end
 

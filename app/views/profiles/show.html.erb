@@ -32,7 +32,7 @@
 	<ul class="row links-bar nav nav-pills nav-stacked">
 		<li class="pic-link"><%= image_tag avatar_url(current_user), :class => "avatar-logo", disable: true %></li>
 		<li role="presentation" class="timeline-link text-center"><%=link_to "Timeline", newsfeed_path(current_user) %></li>
-		<li class="user-link text-center"><%=link_to "Users" %></li>
+		<li class="user-link text-center"><%=link_to "Users", users_path %></li>
 		<li class="about-link text-center"><%=link_to "About", user_profile_path(current_user), disbale: true %></li>
 		<li class="photo-link text-center"><%=link_to "Photos", user_photos_path(current_user) %></li>
 		<li class="friend-link text-center"><%=link_to "Friends" %></li>
@@ -48,7 +48,7 @@
 
 
 <% if current_user.photos.first.nil? %>
-	<div class="col-xs-8 main-background-logo"><%image_tag("la.jpg", size: "1120x430", alt: "background-pic", :id=>"backgound-pic") %>
+	<div class="col-xs-8 main-background-logo"><%=image_tag("simple-blue.jpg", size: "1120x430", alt: "background-pic", :id=>"backgound-pic") %>
 		
 	</div>
 
@@ -58,7 +58,6 @@
 <%end%>
 
 </div>
-</nav>
 </div>
 
 
@@ -67,12 +66,12 @@
 	<div class="row">
 	  <div class="profile-wrapper">	
 		<div class="col-xs-4 col-xs-offset-3 profile-section-1">
-  			<h2>Word to live by:</h2><p> <%=@profile.words_to_live_by %></p>
+  			<h2>Words to live by:</h2><p> <%=@profile.words_to_live_by %></p>
   		</div>
 
   		<div class="col-xs-4 profile-section-2">
-			<h2>Birthday:</h2><p> <%=@profile.birthday %></p>
-			<h2>Hometown:</h2><p> <%=@profile.hometown.length%></p>
+			<h2>Birthday:</h2><p><%=@profile.birthday %></p>
+			<h2>Hometown:</h2><p><%=@profile.hometown%></p>
 			<h2>College:</h2><p><%=@profile.college %></p>
 		</div>
 	  </div>

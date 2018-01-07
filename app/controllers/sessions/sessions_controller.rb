@@ -8,13 +8,16 @@ class Sessions::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
    def create
+    flash[:success]= "signed in"
      super
      
    end
 
   # DELETE /resource/sign_out
    def destroy
+     flash[:notice]= "Succesfully signed out"
      super
+     #flash[:notice]= "Succesfully signed out"
     
    end
 

@@ -1,10 +1,118 @@
-<%=link_to "newsfeed", newsfeed_path(current_user)%>
-<%=@post.body %>
+<div class="container">
+<nav class="header">
+	<div class="row top-header-bar">
+		
+		<div class="col-xs-2 "></div>
+		
+		<div class="col-xs-3 title-text"><%=image_tag("fb-1", size: "40x40")%></div>
+		
+		<div class="col-xs-4"><input type="text" class="form-control top-search-bar" aria-label="search" placeholder="search">
+			
+		</div>
+		
+		<div class="col-xs-2 top-bar-name">
+			<%= image_tag avatar_url(current_user), :class => "avatar-logo", size: "30x30"%>
+			<h4 class="top-nav-name"><%=current_user.first_name%></h4>
+		<div class="friend-icon">
+			<span class="glyphicon glyphicon-user"></span>
+				<span class="friend_count"><%= current_user.pending.count%></span>	<div class="sign-out-nav">
+				<%= link_to "Logout", destroy_user_session_path, method: :delete %></div>
+		
+		
+	</div>
+		</div>
 
-
-<%=simple_form_for(@post.comments.build, :url =>  post_comments_path(@post.id), :method => :create) do |f| %>
 	
-	<%=f.text_area :body, placeholder: "Provide comment" %>
+</nav>
+</div>
+	
+	
+	<div class="col-xs-2 side-links">
+			<nav>
+	<ul class="row links-bar nav nav-pills nav-stacked">
+		<li class="pic-link"><%= image_tag avatar_url(current_user), :class => "avatar-logo" %></li>
+		<li role="presentation" class="timeline-link text-center"><%=link_to "Timeline", newsfeed_path(current_user)%></li>
+		<li class="user-link text-center"><%=link_to "Users", users_path %></li>
+		<li class="about-link text-center"><%=link_to "About", user_profile_path(current_user) %></li>
+		<li class="photo-link text-center"><%=link_to "Photos", user_photos_path(current_user) %></li>
+		<li class="friend-link text-center"><%=link_to "Friends", user_friendships_path(current_user) %></li>
+		<li class="profile-link text-center"><%=link_to "Edit profile", edit_user_profile_path(current_user)%></li>
+
+	
+</div>
+</ul>
+</nav>
+</div>
+
+
+
+
+<% if current_user.photos.first.nil? %>
+	<div class="col-xs-8 main-background-logo"><%=image_tag("simple-blue.jpg", size: "1120x430", alt: "background-pic", :id=>"backgound-pic") %>
+		
+	</div>
+
+<%else%>
+<div class="col-xs-8 main-background-logo"><%= image_tag(current_user.photos.first.image.url, size: "1120x430", :id=> "backgound-pic")%></div>
+</div>
+<%end%>
+
+</div>
+
+<div class="row">
+	<div class="col-xs-12 post-comment-wrapper">
+<div class="post-info-wrapper">
+	<div class="row post-row">
+		<div class="col-xs-4 col-xs-offset-3 post-wrapper">
+			<div class="image-name">
+			<%= image_tag avatar_url(current_user), :class => "avatar-logo post-avatar-logo", size: "30x30"%><span>
+				<h4 class="status-name"><strong><%=link_to current_user.full_name %></strong></h4>
+			</span>
+		</div>
+			<p class="datetime"><%=clean_date(@post.created_at)%></p
+		<p><%=@post.body %></p>
+
+<%unless @post.body.nil? %>
+	<div class="like-form">
+	<%=form_for(current_user.likes.build) do |f| %>
+	<%= f.hidden_field :post_id, value: @post.id %>
+	<div class="like-btn"><%= link_to f.submit "like"%><span class="glyphicon glyphicon-thumbs-up thumb"></span><span><%=@post.likes.count%></span>
+	
+ 
+	</div>
+	<%end %>
+
+
+	<% if @post.likes.any? %>
+
+	<%=@post.likes.count%><p>(likes)</p>
+
+	<%end %>
+	</div>
+
+
+
+
+<br>
+<% if @post.comments.any? %>
+	<%@post.comments.each do |c| %>
+	<%= c.body %>
+	<%= c.author.email %>
+	<%= c.created_at %>
+
+	<%end %>
+<%end%>
+
+<%end %>
+</div>
+</div>
+</div>
+
+
+<%if @post.comments.count < 1 %> 
+<%=simple_form_for(@post.comments.build, :url =>  post_comments_path(@post), :method => :create) do |f| %>
+	
+	<%=f.text_area :body, placeholder: "Provide comments" %>
 	
 	<%=f.hidden_field :author_id, :value => current_user.id %> 
 	
@@ -12,11 +120,8 @@
 	<%=f.submit "Leave comment" %>
 
 <%end %>
+<%end%>
 
-<% if @post.comments.any? %>
-	<%=@post.comments.each do |c| %>
-	<%=c.body %>
-	<%=c.author.inspect %>
-	<%=@post.comments.count%>
-	<%end %>
-	<%end %>
+
+</div>
+</div>
