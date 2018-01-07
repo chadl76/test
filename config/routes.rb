@@ -18,9 +18,9 @@ Rails.application.routes.draw do
  			put :update
  		end
  	end
- 	resources :likes
+ 	#resources :likes
  	resources :posts, only: [:index, :show, :create, :destroy] do 
- 		resources :likes
+ 		resources :likes, only: [:create, :update, :destroy]
  		resources :comments, only: [:new, :show, :create, :update, :destroy]
  	end
 

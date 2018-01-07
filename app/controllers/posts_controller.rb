@@ -12,7 +12,8 @@ class PostsController < ApplicationController
 	def show
 		@user = current_user
 		@post = Post.find(params[:id])	
-		@like = Like.new
+		@like = Like.new(post: @post)
+		#@like = Like.new(params[:post_id])
 		redirect_to newsfeed_path(current_user)
 	end
 

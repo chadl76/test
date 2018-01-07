@@ -12,15 +12,13 @@
 
 <%unless post.body.nil? %>
 	<div class="like-form">
-	<%=form_for(post.likes.build) do |f| %>
-	<%= f.hidden_field :post, :value => :post %>
-	<div class="like-btn"><%=link_to "like", "#", :class => "btn btn-primary"%><span class="glyphicon glyphicon-thumbs-up thumb"></span><span><%=post.likes.count%></span>
+	<div class="like-btn"><%=link_to "like", post_likes_path(post), :method => :post,  :class => "btn btn-primary"%><span class="glyphicon glyphicon-thumbs-up thumb"></span><span><%=post.likes.count%></span>
 		<span>
 <%=link_to "Comments", new_post_comment_path(post_id: post.id) %>
  </span>
  	<span><%=link_to "Delete post", post_path(post.id), :method => :delete, :class=> "delete_post"%></span>
 	</div>
-	<%end %>
+
 
 
 	</div>

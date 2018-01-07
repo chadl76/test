@@ -9,6 +9,8 @@ class Sessions::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
    def create
     flash[:success]= "signed in"
+  else
+    redirect_to :root
      super
      
    end
