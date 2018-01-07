@@ -10,6 +10,7 @@ class FriendshipsController < ApplicationController
   	if @friendship.save
   		flash[:notice] = "Friend requested"
   		redirect_to newsfeed_path(current_user)
+
   	else
   		flash[:error] = "Unable to request friend"
   		redirect_to :back
@@ -17,8 +18,8 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-  	@friendship = Friendship.find_by(params[:friend_id])
-  	@friendship.update(friend_id: params[:friend_id])
+  	@friendship = Friendship.find_by(id: params[:id])
+  	#@friendship.update(friend_id: params[:id])
     @friendship.update(accepted: true)
   	if @friendship.save
   		redirect_to newsfeed_path(current_user)
@@ -38,6 +39,7 @@ class FriendshipsController < ApplicationController
    def friendship_params
     params.require(:friendships).permit(
                 :friend_id,
+                :accepted,
                 :id)
    end
 end

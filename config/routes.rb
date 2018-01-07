@@ -10,9 +10,14 @@ Rails.application.routes.draw do
  	resources :users, only: [:index, :show] do		 
  		resource :profile
  		resources :photos
+ 		resources :friendships
  		get 'upload' => 'photos#new'
  	end
- 	resources :friendships, only: [:create, :update, :destroy]
+ 	resources :friendships, only: [:create, :update, :destroy] do
+ 		collection do 
+ 			put :update
+ 		end
+ 	end
  	resources :likes
  	resources :posts, only: [:index, :show, :create, :destroy] do 
  		resources :likes

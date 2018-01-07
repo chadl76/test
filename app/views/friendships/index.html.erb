@@ -1,0 +1,6 @@
+<%current_user.pending.each do |p| %>
+<ul>
+	<%=p.email %><span><%=link_to "accept", friendship_path(:id=> p), method: "put"%></span>
+</ul>
+
+<%end %>

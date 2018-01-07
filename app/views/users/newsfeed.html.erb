@@ -15,7 +15,7 @@
 			<h4 class="top-nav-name"><%=current_user.first_name%></h4>
 		<div class="friend-icon">
 			<span class="glyphicon glyphicon-user"></span>
-				<%= current_user.pending.count  %>	<div class="sign-out-nav">
+				<span class="friend_count"><%= current_user.pending.count%></span>	<div class="sign-out-nav">
 				<%= link_to "Logout", destroy_user_session_path, method: :delete %></div>
 		
 		<%=render 'friend_btn' %>
@@ -35,7 +35,7 @@
 		<li class="user-link text-center"><%=link_to "Users", users_path %></li>
 		<li class="about-link text-center"><%=link_to "About", user_profile_path(current_user) %></li>
 		<li class="photo-link text-center"><%=link_to "Photos", user_photos_path(current_user) %></li>
-		<li class="friend-link text-center"><%=link_to "Friends" %></li>
+		<li class="friend-link text-center"><%=link_to "Friends", user_friendships_path(current_user) %></li>
 		<li class="profile-link text-center"><%=link_to "Edit profile", edit_user_profile_path(current_user)%></li>
 
 	
@@ -68,4 +68,13 @@
 <%= render 'shared/feed' %>
 
 </div>
-
+<div class="row">
+	<div class="col-xs-6">
+<div class="friendships">
+	<h1>current friends</h1>
+	<%current_user.friends.each do |f| %>
+	<h4><%=f.email%></h4>
+	<%end %>
+</div>
+</div>
+</div>
